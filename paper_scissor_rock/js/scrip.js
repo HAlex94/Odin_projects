@@ -21,16 +21,23 @@ function playRound(playerSelection, computerSelection) {
     if (low_player_txt == "rock" && computerSelection == "scissors" || low_player_txt == "paper" && computerSelection == "rock" 
     || playerSelection =="scissors" && computerSelection == "paper") {
         alert("You Win!");
+        return playerSelection
     } else if (playerSelection === computerSelection) {
-        alert("Draw, try again!")
+        alert("Draw, try again!");
+        return playerSelection;
     } else {
-        alert("You Lose!")
+        alert("You Lose!");
+        return playerSelection
     }
 
   }
    
 function game() {
-    
+
+for (let i = 0; i < 5; i++) {
+   // your code here!
+}
+
 
 }
   console.log(playRound(playerSelection, computerSelection));
