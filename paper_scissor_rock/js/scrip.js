@@ -1,7 +1,6 @@
   
-  
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
+let  computerScore = 0;
+let  playerScore = 0;
 
 function getComputerChoice() {
     // create a list holding game choices 
@@ -20,24 +19,41 @@ function playRound(playerSelection, computerSelection) {
         //winning conditionals
     if (low_player_txt == "rock" && computerSelection == "scissors" || low_player_txt == "paper" && computerSelection == "rock" 
     || playerSelection =="scissors" && computerSelection == "paper") {
-        alert("You Win!");
-        return playerSelection
+        console.log("You Win!");
+        playerScore++;
+        return playerSelection, computerSelection;
     } else if (playerSelection === computerSelection) {
-        alert("Draw, try again!");
-        return playerSelection;
+        console.log("Draw, try again!");
+        return playerSelection, computerSelection;
     } else {
-        alert("You Lose!");
-        return playerSelection
+        console.log("You Lose!");
+        computerScore++;
+        return playerSelection, computerSelection;
     }
 
   }
    
 function game() {
-
 for (let i = 0; i < 5; i++) {
-   // your code here!
+    computerScore = 0
+    playerScore = 0
+    //play 5 rounds
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = prompt('Choose Rock Paper or Scissors!');
+        const computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection)
+          
+    }
+    if(playerScore > computerScore){
+        console.log('You win the game');
+    }
+    else if(playerScore < computerScore){
+        console.log('You lose the game');
+    }
+    else if(playerScore === computerScore){
+        console.log('Draw');
+    }
+}
 }
 
-
-}
-  console.log(playRound(playerSelection, computerSelection));
+game(); 
