@@ -1,4 +1,5 @@
   
+//create score variables
 let  computerScore = 0;
 let  playerScore = 0;
 
@@ -22,10 +23,14 @@ function playRound(playerSelection, computerSelection) {
         console.log("You Win!");
         playerScore++;
         return playerSelection, computerSelection;
-    } else if (playerSelection === computerSelection) {
+    } 
+        //tie conditional
+    else if (playerSelection === computerSelection) {
         console.log("Draw, try again!");
         return playerSelection, computerSelection;
-    } else {
+    } 
+    //loosing conditional 
+    else {
         console.log("You Lose!");
         computerScore++;
         return playerSelection, computerSelection;
