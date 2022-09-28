@@ -2,6 +2,7 @@
 //create score variables
 let  computerScore = 0;
 let  playerScore = 0;
+let announcement ='';
 
 function getComputerChoice() {
     // create a list holding game choices 
@@ -42,6 +43,7 @@ function game() {
     //set scoreboard to 0
     computerScore = 0
     playerScore = 0
+    announcement= ''
     //play 5 rounds
     for (let i = 0; i < 5; i++) {
         //create params for playRound (e.g. your choice + comps)
@@ -52,14 +54,15 @@ function game() {
     }
     //Announce game results!
     if(playerScore > computerScore){
-        alert('You win the game');
+        announcement = 'You win the game';
     }
     else if(playerScore < computerScore){
-        alert('You lose the game');
+        announcement = 'You lose the game';
     }
     else if(playerScore === computerScore){
-        alert('Draw, Play Again!');
+        announcement = 'Draw, Play Again!';
     }
+    alert(announcement);
 }
 
 game(); 
