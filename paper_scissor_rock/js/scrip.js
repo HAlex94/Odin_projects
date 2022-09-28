@@ -45,7 +45,7 @@ function game() {
     playerScore = 0
     announcement= ''
     //play 5 rounds
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 3; i++) {
         //create params for playRound (e.g. your choice + comps)
         const playerSelection = prompt('Choose Rock Paper or Scissors!'); //use prompt to enter choice
         const computerSelection = getComputerChoice();
@@ -54,13 +54,13 @@ function game() {
     }
     //Announce game results!
     if(playerScore > computerScore){
-        announcement = 'You win the game';
+        announcement = 'You win :)';
     }
     else if(playerScore < computerScore){
-        announcement = 'You lose the game';
+        announcement = 'You lose :(';
     }
     else if(playerScore === computerScore){
-        announcement = 'Draw, Play Again!';
+        announcement = 'Draw :|, Play Again!';
     }
     alert(announcement);
 }
