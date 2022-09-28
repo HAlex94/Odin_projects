@@ -52,13 +52,13 @@ function game() {
     }
     //Announce game results!
     if(playerScore > computerScore){
-        console.log('You win the game');
+        alert('You win the game');
     }
     else if(playerScore < computerScore){
-        console.log('You lose the game');
+        alert('You lose the game');
     }
     else if(playerScore === computerScore){
-        console.log('Draw');
+        alert('Draw, Play Again!');
     }
 }
 
