@@ -1,10 +1,13 @@
   
-//create score variables
-let  computerScore = 0;
-let  playerScore = 0;
-let announcement ='';
+    
+//Game Set Up   
+    //create score variables
+var playerScore = 0
+var computerScore = 0
+var announcement ='';
 
-function getComputerChoice() {
+  //create functions 
+function getComputerChoice() { 
     // create a list holding game choices 
    const choice_list = ['paper', 'scissors', 'rock']
    //create a random # between 1-3 and assign as index
@@ -15,54 +18,80 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     // turn playerSelection into all lowercase to compare with computerSelection
-    const low_player_txt = playerSelection.toLowerCase();
+    const playerSelectionLow = playerSelection.toLowerCase();
 
     //start game: one round
         //winning conditionals
-    if (low_player_txt == "rock" && computerSelection == "scissors" || low_player_txt == "paper" && computerSelection == "rock" 
-    || playerSelection =="scissors" && computerSelection == "paper") {
-        console.log("You Win!");
+    if (playerSelectionLow == "rock" && computerSelection == "scissors" || playerSelectionLow == "paper" && computerSelection == "rock" 
+    || playerSelectionLow =="scissors" && computerSelection == "paper") {
+        alert("Round Win!");
         playerScore++;
-        return playerSelection, computerSelection;
     } 
         //tie conditional
-    else if (playerSelection === computerSelection) {
-        console.log("Draw, try again!");
-        return playerSelection, computerSelection;
+    else if (playerSelectionLow === computerSelection) {
+        alert("Round Draw!");
     } 
     //loosing conditional 
     else {
-        console.log("You Lose!");
+        alert("Round Lose!");
         computerScore++;
-        return playerSelection, computerSelection;
     }
+
+    alert(playerScore)
 
   }
-   
-function game() {
-    //set scoreboard to 0
-    computerScore = 0
+
+function reset() {
     playerScore = 0
-    announcement= ''
-    //play 5 rounds
-    for (let i = 0; i < 3; i++) {
-        //create params for playRound (e.g. your choice + comps)
-        const playerSelection = prompt('Choose Rock Paper or Scissors!'); //use prompt to enter choice
-        const computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection) //call playRound()
-          
-    }
-    //Announce game results!
-    if(playerScore > computerScore){
-        announcement = 'You win :)';
-    }
-    else if(playerScore < computerScore){
-        announcement = 'You lose :(';
-    }
-    else if(playerScore === computerScore){
-        announcement = 'Draw :|, Play Again!';
-    }
-    alert(announcement);
+    computerScore = 0
 }
 
-game(); 
+function playGame(playerSelection) {
+    const computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection); //call playRound()
+                //Announce game results!
+    if(playerScore == 3 && playerScore > computerScore){
+        announcement = 'You win :)';
+        alert(announcement);
+        reset();
+    }
+    else if(computerScore ==3 && playerScore < computerScore){
+        announcement = 'You lose :(';
+        alert(announcement);
+        reset();
+    }
+    else if(playerScore == 3 && playerScore === computerScore){
+        announcement = 'Draw :|\n Play Again!';
+        alert(announcement)
+        reset();   
+    } 
+    return playerScore, computerScore
+}
+
+function playRock() {
+    const playerSelection = 'rock'; // enter choice
+    playGame(playerSelection); 
+}
+
+function playPaper() {
+    const playerSelection = 'paper';
+    playGame(playerSelection); 
+}
+
+function playScissors() {
+    const playerSelection = 'scissors'; 
+    playGame(playerSelection); 
+  
+}
+
+
+
+//Functionality Elements 
+
+ //button functinlaity
+ document.getElementById("paper").addEventListener("click", playPaper);
+ document.getElementById("rock").addEventListener("click", playRock);
+ document.getElementById("scissors").addEventListener("click", playScissors);
+
+ var lblScore = Document.getElementbyId('lblScore');
+ lblScore.innerHTML=playerScore;

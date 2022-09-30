@@ -1,0 +1,47 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:30px;
+    height: 900px;
+    width: 100%;
+    
+  }  
+
+  #scoreboard {
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 300px;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 56px;
+    
+  }
+  #box {
+    display: flex;
+    justify-content: center;
+    gap:10px;
+    padding-left: 100px;
+  }
+  #scoreboard_name,
+  .scoreboard_score {
+    padding: 10px;
+    text-align: center;
+  }
+  #scoreboard_name{
+    font-weight: 200px;
+    border-bottom: 1px solid salmon;
+  }
+  #rock {
+    height: 30px;
+    width: 100px;
+  }
+  #paper {
+    height: 30px;
+    width: 100px;
+  }
+  #scissors {
+    height: 30px;
+    width: 100px;
+  }
