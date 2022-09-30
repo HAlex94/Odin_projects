@@ -37,34 +37,45 @@ function playRound(playerSelection, computerSelection) {
         computerScore++;
     }
 
-    alert(playerScore)
-
   }
 
 function reset() {
     playerScore = 0
     computerScore = 0
+        
+    //scoreboard code 
+    const playerScorePara = document.getElementById('playerScore')
+    const computerScorePara = document.getElementById('computerScore')
+         
+    playerScorePara.textContent = `${playerScore}`
+    computerScorePara.textContent = `${computerScore}`
 }
 
 function playGame(playerSelection) {
     const computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection); //call playRound()
+
+    //scoreboard code 
+    const playerScorePara = document.getElementById('playerScore')
+    const computerScorePara = document.getElementById('computerScore')
+     
+    playerScorePara.textContent = `${playerScore}`
+    computerScorePara.textContent = `${computerScore}`
+    
                 //Announce game results!
     if(playerScore == 3 && playerScore > computerScore){
         announcement = 'You win :)';
         alert(announcement);
-        reset();
     }
     else if(computerScore ==3 && playerScore < computerScore){
         announcement = 'You lose :(';
         alert(announcement);
-        reset();
     }
     else if(playerScore == 3 && playerScore === computerScore){
         announcement = 'Draw :|\n Play Again!';
-        alert(announcement)
-        reset();   
+        alert(announcement);  
     } 
+
     return playerScore, computerScore
 }
 
@@ -92,6 +103,6 @@ function playScissors() {
  document.getElementById("paper").addEventListener("click", playPaper);
  document.getElementById("rock").addEventListener("click", playRock);
  document.getElementById("scissors").addEventListener("click", playScissors);
+ document.getElementById("reset").addEventListener("click", reset);
 
- var lblScore = Document.getElementbyId('lblScore');
- lblScore.innerHTML=playerScore;
+
