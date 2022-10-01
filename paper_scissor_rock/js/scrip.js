@@ -1,12 +1,11 @@
-  
-    
-//Game Set Up   
+//Game Set Up  
     //create score variables
 var playerScore = 0
-var computerScore = 0
-var announcement ='';
+var computerScore = 0 
 
   //create functions 
+
+   //randomize computer choice 
 function getComputerChoice() { 
     // create a list holding game choices 
    const choice_list = ['paper', 'scissors', 'rock']
@@ -16,93 +15,120 @@ function getComputerChoice() {
    return choice_list[rand_num_ind]
     }
 
+    //update scores in html
+function updateScores (playerScore, computerScore) {
+    document.getElementById('playerScore').innerHTML = playerScore
+    document.getElementById('computerScore').innerHTML = computerScore
+    return [playerScore, computerScore]
+    } 
+
+    //reset game 
+function resetGame() {
+
+    playerScore = 0
+    computerScore = 0
+    
+    //update scoreboard code 
+    updateScores (playerScore, computerScore);
+}
+
+     //start game: single round
 function playRound(playerSelection, computerSelection) {
     // turn playerSelection into all lowercase to compare with computerSelection
     const playerSelectionLow = playerSelection.toLowerCase();
 
-    //start game: one round
         //winning conditionals
-    if (playerSelectionLow == "rock" && computerSelection == "scissors" || playerSelectionLow == "paper" && computerSelection == "rock" 
-    || playerSelectionLow =="scissors" && computerSelection == "paper") {
-        alert("Round Win!");
-        playerScore++;
-    } 
+    if ((playerSelectionLow == "rock" && computerSelection == "scissors") || 
+        (playerSelectionLow == "paper" && computerSelection == "rock") || 
+        (playerSelectionLow =="scissors" && computerSelection == "paper")) {
+            //alert("Round Win!");
+            playerScore++;
+            roundWinner = "player wins"
+        }
         //tie conditional
     else if (playerSelectionLow === computerSelection) {
-        alert("Round Draw!");
+        roundWinner = "tie"
     } 
     //loosing conditional 
     else {
-        alert("Round Lose!");
-        computerScore++;
-    }
+            roundWinner = "CPU wins"
+            computerScore++;
+         }
 
+    updateScores (playerScore, computerScore);
+    return [playerScore, computerScore]
   }
 
-function reset() {
-    playerScore = 0
-    computerScore = 0
-        
-    //scoreboard code 
-    const playerScorePara = document.getElementById('playerScore')
-    const computerScorePara = document.getElementById('computerScore')
-         
-    playerScorePara.textContent = `${playerScore}`
-    computerScorePara.textContent = `${computerScore}`
-}
+  //Game results
+function gameEnd(playerSelection, playerScore, computerScore) {
 
-function playGame(playerSelection) {
-    const computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection); //call playRound()
-
-    //scoreboard code 
-    const playerScorePara = document.getElementById('playerScore')
-    const computerScorePara = document.getElementById('computerScore')
-     
-    playerScorePara.textContent = `${playerScore}`
-    computerScorePara.textContent = `${computerScore}`
+    if((playerScore == 3) && (playerScore > computerScore)){
+        gameResult = "You Win!";
+        }
+    else if((computerScore == 3) && (playerScore < computerScore)){
+        gameResult = "You Lose :((";
+        }
     
-                //Announce game results!
-    if(playerScore == 3 && playerScore > computerScore){
-        announcement = 'You win :)';
-        alert(announcement);
+    return gameResult    
+}
+    //whole game
+function playGame(playerSelection) {
+
+    //computer choice
+    const computerSelection = getComputerChoice();
+
+    //play game!
+    let [playerScore, computerScore] = playRound(playerSelection, computerSelection) 
+
+    //game results
+    let gameResult = gameEnd(playerSelection, playerScore, computerScore);
+
+    return gameResult 
+}
+//modal functions 
+    //open modal
+function openModal(gameResult) {
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    const Btns = document.querySelectorAll(".myBtn");
+
+    //add something to add announcement
+    document.getElementById('modal-body').innerHTML = gameResult
+    modal.style.display = "block";  
+}
+    //close modal 
+function closeModal(){
+    // Get the modal
+    const modal = document.querySelector("#myModal")
+    modal.style.display = "none";  
     }
-    else if(computerScore ==3 && playerScore < computerScore){
-        announcement = 'You lose :(';
-        alert(announcement);
-    }
-    else if(playerScore == 3 && playerScore === computerScore){
-        announcement = 'Draw :|\n Play Again!';
-        alert(announcement);  
-    } 
 
-    return playerScore, computerScore
-}
+  //UI
+  const playerText = document.querySelector("#playerText");
+  const computerText = document.querySelector("#computerText");
+  const resultText = document.querySelector("#resultText");
+  const choiceBtns = document.querySelectorAll(".myBtn");
+  const resetBtn = document.querySelectorAll("#reset");
+  let player;
+  let computer;
+  let result;
 
-function playRock() {
-    const playerSelection = 'rock'; // enter choice
-    playGame(playerSelection); 
-}
-
-function playPaper() {
-    const playerSelection = 'paper';
-    playGame(playerSelection); 
-}
-
-function playScissors() {
-    const playerSelection = 'scissors'; 
-    playGame(playerSelection); 
-  
-}
+choiceBtns.forEach(button => button.addEventListener("click", () => {
+    playerSelection = button.textContent;
+    let gameResult = playGame(playerSelection);
+    openModal(gameResult);
+}))
 
 
+resetBtn.forEach(button => button.addEventListener("click", () => {
+    resetGame();
+    closeModal();
+    location.reload();
+}))
 
-//Functionality Elements 
 
- //button functinlaity
- document.getElementById("paper").addEventListener("click", playPaper);
- document.getElementById("rock").addEventListener("click", playRock);
- document.getElementById("scissors").addEventListener("click", playScissors);
- document.getElementById("reset").addEventListener("click", reset);
+    
 
 
