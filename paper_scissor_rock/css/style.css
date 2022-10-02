@@ -23,26 +23,29 @@
   #btn_box {
     display: flex;
     justify-content: center;
-    gap:10px;
+    gap:20px;
   }
 
   #scoreboard_name{
     font-weight: 200px;
     border-bottom: 1px solid salmon;
   }
-  #rock {
-    height: 30px;
-    width: 100px;
-  }
-  #paper {
-    height: 30px;
-    width: 100px;
-  }
+  #rock,
+  #paper,
   #scissors {
     height: 30px;
     width: 100px;
+    background-color: transparent;
+    border-color: transparent;
+    color: transparent;
   }
-  
+.myBtn:hover,
+.myBtn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+ 
   /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -63,7 +66,8 @@
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 30%; /* Could be more or less, depending on screen size */
+  text-align: center;
 }
 
 /* The Close Button */
