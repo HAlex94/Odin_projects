@@ -1,5 +1,15 @@
-
-
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    
+}
+body {
+    background-image: url(../images/background.jpg);
+   }
 #container {
     display: flex;
     flex-direction: column;
@@ -13,7 +23,7 @@
 #announcement {
   font-family: 'Quicksand', sans-serif;
   font-size: 56px;
-  background-color: rgba(250, 93, 31, 0.514);
+  background-color: rgba(250, 93, 31, 0.705);
   mask-position: center;
 }
 #scoreboard_name,
@@ -56,12 +66,37 @@
   background-color: rgba(170, 170, 170, 0.144);
   cursor: pointer;
   box-shadow: 10px 10px 10px #000;
+  transform: scale(1.2);
   }
 
 #rock:active,
 #paper:active,
 #scissors:active  {
   box-shadow: inset 2px 2px 10px #000;
+}
+
+footer{
+  display: flex;
+  background-color: rgba(128, 128, 128, 0.377);
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  justify-content: center;
+  color: aliceblue;
+  font-weight: bold;
+  text-decoration: underline;
+  gap: 10px
+  
+}
+a {
+  font-weight: bold;
+}
+#gh-logo{
+  width: 20px;
+  height: 20px;
+  
 }
 
   /* The Modal (background) */
@@ -81,7 +116,7 @@
 /* Modal Content/Box */
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: #3b3131f3;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
@@ -90,6 +125,7 @@
 }
 .Title {
   font-family: 'Quicksand', sans-serif;
+  color: rgb(233, 229, 229);
   font-size: 50px;
   font-weight: bold;
   text-decoration-line: underline;
@@ -97,15 +133,17 @@
 #modal-body {
   font-family: 'Quicksand', sans-serif;
   font-size: 50px;
+  color: rgb(233, 229, 229);
 }
 /* The Close Button */
 #reset {
-  color: #aaa;
+  color: rgb(43, 39, 39);
   font-size: 26px;
   font-weight: bold;
   width: 50%;
   height: 30%;
   margin-top: 20px;
+ 
 }
 
 #reset:hover,
@@ -113,4 +151,5 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
+  transform: scale(1.2);
 }
