@@ -42,17 +42,20 @@ function playRound(playerSelection, computerSelection) {
         (playerSelectionLow == "paper" && computerSelection == "rock") || 
         (playerSelectionLow =="scissors" && computerSelection == "paper")) {
             //alert("Round Win!");
-            playerScore++;
-            roundWinner = "player wins"
+        playerScore++;
+        roundWinner = "Player Wins"
+        document.getElementById('announcement').innerHTML = "Round: " + roundWinner
         }
         //tie conditional
     else if (playerSelectionLow === computerSelection) {
-        roundWinner = "tie"
+        roundWinner = "Draw"
+        document.getElementById('announcement').innerHTML = "Round: " + roundWinner
     } 
     //loosing conditional 
     else {
-            roundWinner = "CPU wins"
+            roundWinner = "CPU Wins"
             computerScore++;
+            document.getElementById('announcement').innerHTML = "Round: " + roundWinner
          }
 
     updateScores (playerScore, computerScore);
