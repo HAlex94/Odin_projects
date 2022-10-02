@@ -109,14 +109,9 @@ function closeModal(){
     }
 
   //UI
-  const playerText = document.querySelector("#playerText");
-  const computerText = document.querySelector("#computerText");
-  const resultText = document.querySelector("#resultText");
   const choiceBtns = document.querySelectorAll(".myBtn");
   const resetBtn = document.querySelectorAll("#reset");
-  let player;
-  let computer;
-  let result;
+
 
 choiceBtns.forEach(button => button.addEventListener("click", () => {
     playerSelection = button.textContent;
