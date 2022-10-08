@@ -1,5 +1,5 @@
 //create default values 
-const StartGridSize = 10
+const StartGridSize = 20
 let gridState = StartGridSize
 
 let color = "black";
@@ -16,7 +16,7 @@ const square = document.querySelector("div");
 
 
     //functions
-        //create a function that inserts divs and creates the initial 10x10 grid 
+        //creates initial 10x10 grid 
 startGrid = (rows, columns) => {
     grid.style.gridTemplateColumns = `repeat(${rows}, 1fr)`
     grid.style.gridTemplateRows = `repeat(${columns}, 1fr)`
@@ -27,7 +27,7 @@ startGrid = (rows, columns) => {
         grid.appendChild(square);
     }
 };
-        //run function upo start
+    //run function upon start
 window.onload = () => {
         startGrid(gridState, gridState);
     }
@@ -58,17 +58,18 @@ changeGridSize = (newValue) => {
   }
 
   //colors
+  //create a random color
 randomColor = () => {
   let R = Math.floor(Math.random() * 256);
   let G = Math.floor(Math.random() * 256);
   let B = Math.floor(Math.random() * 256);
   return `rgb(${R},${G},${B})`
 }
-
+ //choose color 
 pickColor = (choice) => {
   color = choice;
 }
-
+ //set color 
 function setColor() {
   if (click) {
     if (color === "random") {
